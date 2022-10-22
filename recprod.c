@@ -1,5 +1,5 @@
 #include<stdio.h>
-
+#include<stdlib.h>
 int product(int x, int y){
 	if(x < y)
 		return product(y, x);
