@@ -1,5 +1,5 @@
 mylogs.log
-.vscode
-.exe
-.out
+*.vscode
+*.exe
+*.out
 
