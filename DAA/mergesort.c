@@ -91,6 +91,9 @@ int main()
     scanf("%d", &arr_size);
 	int arr[arr_size];
     
+	srand(time(0)); //Generate fully random numbers
+					//Instead of pseudo-random numbers
+
     for(int i = 0; i < arr_size; i++)
         arr[i] = rand()%(arr_size + 1);
     printf("Array generated is \n");
@@ -103,7 +106,7 @@ int main()
 	printf("\nSorted array is \n");
 	printArray(arr, arr_size);
     double total_t = (double)(end_t - start_t)/CLOCKS_PER_SEC;
-	printf("Time taken: %ld secs.", total_t);
+	printf("Time taken: %f secs.", total_t);
     return 0;
 }
 
