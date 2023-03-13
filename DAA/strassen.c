@@ -80,8 +80,8 @@ int **matrix_multiply(int **a, int **b){
 
 int **strassen(int **a, int **b, int row, int deallocate){
     int **c = matrix_allocate(row, row);
-    if(row == 1){
-		**c = **a * **b;           
+    if(row == 2){
+		c = matrix_multiply(a, b);           
     }
     else{
         int row2 = row / 2;
