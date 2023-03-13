@@ -136,8 +136,8 @@ int main(){
     srand(time(0));
     for(int i = 0; i < n; i++){
         for(int j = 0; j < n; j++){
-            A[i][j] = i + j;
-            B[i][j] = i + j;
+            A[i][j] = rand() % 101;
+            B[i][j] = rand() % 101;
         }
     }
     matrix_print("A", A, n);

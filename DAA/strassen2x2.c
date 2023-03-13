@@ -37,9 +37,9 @@ void matrix_print(const char *str, int **a, int row){
 
     for(int i = 0; i < row; i++){
         if(i == 0)
-            w = printf("%s = ", str);
+            w = printf("%s =", str);
         else
-            printf("%*s ", w, "");
+            printf("%*s", w, "");
         for(int j = 0; j < row; j++){
             printf("%*d ", nw, a[i][j]);
         }
