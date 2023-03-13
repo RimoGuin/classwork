@@ -80,8 +80,8 @@ int **matrix_multiply(int **a, int **b){
 
 int **strassen(int **a, int **b, int row, int deallocate){
     int **c = matrix_allocate(row, row);
-    if(row == 2){
-        return matrix_multiply(a ,b);        
+    if(row == 1){
+		**c = **a * **b;           
     }
     else{
         int row2 = row / 2;
@@ -114,7 +114,7 @@ int **strassen(int **a, int **b, int row, int deallocate){
                 c[i][j] = c11[i][j];
                 c[i][j + row2] = c12[i][j];
                 c[i + row2][j] = c21[i][j];
-                a22[i + row][j + row2] = c22[i][j];
+                c[i + row2][j + row2] = c22[i][j];
             }
         }
         matrix_free(c11, row2);

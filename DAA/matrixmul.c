@@ -136,11 +136,13 @@ int main(int argc, char **argv){
 	int n = argc < 2 ? 8 : atoi(argv[1]);
 	int **A = matrix_allocate(n, n);
 	int **B = matrix_allocate(n, n);
-
+	
+	srand(time(0));
+	
 	for(int i = 0; i < n; i++){
 		for(int j = 0; j < n; j++){
-			A[i][j] = i + j;
-			B[i][j] = i + j;
+			A[i][j] = rand() % 101;
+			B[i][j] = rand() % 101;
 		}
 	}
 
