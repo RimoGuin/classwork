@@ -21,31 +21,16 @@ void matrix_free(int **matrix, int row){
 }
 
 void matrix_print(const char *str, int **a, int row){
-    int min, max, w = 0, n1, n2, nw;
-    min = max = a[0][0];
-    for(int i = 0; i < row; i++){
-        for(int j = 0; j < row; j++){
-            if(min > a[i][j])
-                min = a[i][j];
-            if(max < a[i][j])
-                max = a[i][j];            
-        }
-    }
-    n1 = snprintf(NULL, 0, "%d ", min);
-    n2 = snprintf(NULL, 0, "%d ", max);
-    nw = n1 > n2 ? n1 : n2;
-
-    for(int i = 0; i < row; i++){
-        if(i == 0)
+	int w = 0;
+	for(int i = 0; i < row; i++){
+		if(i == 0)
             w = printf("%s =", str);
-        else
+		else
             printf("%*s", w, "");
-        for(int j = 0; j < row; j++){
-            printf("%*d ", nw, a[i][j]);
-        }
-        printf("\n");
-    }
-    fflush(stdout);
+		for(int j = 0; j < row; j++)
+			printf(" %d", a[i][j]);
+		printf("\n");
+	}    
 }
 
 
