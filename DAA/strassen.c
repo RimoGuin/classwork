@@ -116,6 +116,10 @@ int **strassen(int **a, int **b, int row, int deallocate){
 int main(){
     printf("Enter matrix size:");
     scanf("%d", &n);
+	if((n == 1) || ((n & (n - 1)) != 0)){ //Bitwise operation to check whether the number is a power of 2 or not
+		printf("Strassen's method works only of matrices of length power of 2.");
+		exit(0);
+	}
     int **A = matrix_allocate(n, n);
     int **B = matrix_allocate(n, n);
     
