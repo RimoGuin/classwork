@@ -1,6 +1,13 @@
 //Knapsack problem using greedy method
-# include<stdio.h>
- 
+#include<stdio.h>
+#include<stdlib.h>
+
+void swap(float *a, float *b){
+	float t = *a;
+	*a = *b;
+	*b = t;
+}
+
 void knapsack(int n, float weight[], float profit[], float capacity) {
    float x[20], tp = 0;
    int i, j, u;
@@ -35,7 +42,7 @@ void knapsack(int n, float weight[], float profit[], float capacity) {
 int main() {
    float weight[20], profit[20], capacity;
    int num, i, j;
-   float ratio[20], temp;
+   float ratio[20];
  
    printf("\nEnter the no. of objects:- ");
    scanf("%d", &num);
@@ -55,17 +62,9 @@ int main() {
    for (i = 0; i < num; i++) {
         for (j = i + 1; j < num; j++) {
                   if (ratio[i] < ratio[j]) {
-                              temp = ratio[j];
-                              ratio[j] = ratio[i];
-                              ratio[i] = temp;
-                   
-                              temp = weight[j];
-                              weight[j] = weight[i];
-                              weight[i] = temp;
-                   
-                              temp = profit[j];
-                              profit[j] = profit[i];
-                              profit[i] = temp;
+                              swap(&ratio[i], &ratio[j]);
+                              swap(&weight[i], &weight[j]);
+                              swap(&profit[i], &profit[j]);
                            }
                }
       }
