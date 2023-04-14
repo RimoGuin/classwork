@@ -2,6 +2,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+float cp[20], x[20];
 void swap(float *a, float *b){
 	float t = *a;
 	*a = *b;
@@ -9,7 +10,7 @@ void swap(float *a, float *b){
 }
 
 void knapsack(int n, float weight[], float profit[], float capacity) {
-   float x[20], tp = 0;
+   float tp = 0;
    int i, j, u;
    u = capacity;
  
@@ -30,10 +31,6 @@ void knapsack(int n, float weight[], float profit[], float capacity) {
       x[i] = u / weight[i];
  
    tp = tp + (x[i] * profit[i]);
- 
-   printf("\nThe result vector is:- ");
-   for (i = 0; i < n; i++)
-      printf("%f\t", x[i]);
  
    printf("\nMaximum profit is:- %f", tp);
  
@@ -57,6 +54,7 @@ int main() {
  
    for (i = 0; i < num; i++) {
          ratio[i] = profit[i] / weight[i];
+         cp[i] = ratio[i];
       }
  
    for (i = 0; i < num; i++) {
@@ -70,5 +68,13 @@ int main() {
       }
  
    knapsack(num, weight, profit, capacity);
+    printf("\nThe result vector is:- ");
+   for (i = 0; i < num; i++){ // Displaying the result vector in order of inputs
+        for(j = 0; j < num; j++){
+            if(cp[i] == ratio[j])
+                printf(" %f", x[j]);
+        }
+    }
+   printf("\n");
    return(0);
 }
