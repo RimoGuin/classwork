@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <limits.h>
+#define INT_MAX 999
 
 void printMatrix(int** matrix, int V) {
     printf("Intermediate matrix:\n");
@@ -23,7 +23,7 @@ void floydWarshall(int** graph, int V) {
 
     // Initialize the distance matrix with the graph values
     for (int i = 0; i < V; ++i) {
-        for (int j = 0; j < V; ++j++)
+        for (int j = 0; j < V; ++j)
             dist[i][j] = graph[i][j];
     }
 
@@ -59,7 +59,7 @@ int main() {
     for (int i = 0; i < V; ++i)
         graph[i] = (int*)malloc(V * sizeof(int));
 
-    printf("Enter the adjacency matrix:\n");
+    printf("Enter the adjacency matrix(999 for infinity):\n");
     for (int i = 0; i < V; ++i) {
         for (int j = 0; j < V; ++j) {
             scanf("%d", &graph[i][j]);
