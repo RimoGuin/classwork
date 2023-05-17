@@ -31,34 +31,47 @@ struct Graph* createGraph(int V, int E) {
     return graph;
 }
 
-void printDistance(int distance[], int V) {
-    printf("Vertex    Distance from Source\n");
-    for (int i = 0; i < V; ++i)
-        printf("%d\t\t%d\n", i, distance[i]);
+void printPath(int parent[], int v) {
+    if (parent[v] == -1) {
+        printf("%d ", v);
+        return;
+    }
+    printPath(parent, parent[v]);
+    printf("%d ", v);
+}
+
+void printDistance(int distance[], int parent[], int V, int source) {
+    printf("Vertex    Distance    Path\n");
+    for (int i = 0; i < V; ++i) {
+        printf("%d\t\t%d\t\t", i, distance[i]);
+        printPath(parent, i);
+        printf("\n");
+    }
 }
 
 void BellmanFord(struct Graph* graph, int source) {
     int V = graph->V;
     int E = graph->E;
     int distance[V];
-
-    // Initialize distances from the source to all other vertices as infinite
-    for (int i = 0; i < V; ++i)
+    int parent[V];
+    for (int i = 0; i < V; ++i) {
         distance[i] = INT_MAX;
+        parent[i] = -1;
+    }
     distance[source] = 0;
 
-    // Relax all edges |V| - 1 times
     for (int i = 1; i <= V - 1; ++i) {
         for (int j = 0; j < E; ++j) {
             int u = graph->edge[j].source;
             int v = graph->edge[j].destination;
             int weight = graph->edge[j].weight;
-            if (distance[u] != INT_MAX && distance[u] + weight < distance[v])
+            if (distance[u] != INT_MAX && distance[u] + weight < distance[v]) {
                 distance[v] = distance[u] + weight;
+                parent[v] = u;
+            }
         }
     }
 
-    // Check for negative-weight cycles
     for (int i = 0; i < E; ++i) {
         int u = graph->edge[i].source;
         int v = graph->edge[i].destination;
@@ -69,7 +82,7 @@ void BellmanFord(struct Graph* graph, int source) {
         }
     }
 
-    printDistance(distance, V);
+    printDistance(distance, parent, V, source);
 }
 
 int main() {
@@ -85,7 +98,7 @@ int main() {
     scanf("%d", &source);
 
     printf("Enter the source, destination, and weight for each edge:\n");
-    for (int i = 0; i < E; ++i) {
+    for (int i = 0; i <= E; ++i) {
         scanf("%d %d %d", &graph->edge[i].source, &graph->edge[i].destination, &graph->edge[i].weight);
     }
 
@@ -93,4 +106,3 @@ int main() {
 
     return 0;
 }
-
