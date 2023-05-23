@@ -1,3 +1,29 @@
+/*DFS-CC(G)
+    for each vertex u ∈ G.V
+        u.color = WHITE
+        u.π = NIL
+    time = 0
+    cc = 1
+    for each vertex u ∈ G.V
+        if u.color == WHITE
+            u.cc = cc
+            cc = cc + 1
+            DFS-VISIT-CC(G, u)
+			
+DFS-VISIT-CC(G, u)
+    time = time + 1
+    u.d = time
+    u.color = GRAY
+    for each vertex v ∈ G.Adj[u]
+        if v.color == WHITE
+            v.cc = u.cc
+            v.π = u
+            DFS-VISIT-CC(G, v)
+    u.color = BLACK
+    time = time + 1
+    u.f = time
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
