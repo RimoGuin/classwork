@@ -2,4 +2,4 @@ mylogs.log
 *.vscode
 *.exe
 *.out
-
+*.class
