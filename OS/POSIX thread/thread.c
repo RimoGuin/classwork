@@ -3,7 +3,7 @@
 
 // Function to compute the factorial of a number
 void* factorialFunction(void* arg) {
-    int n = (int)arg;
+    int n = *((int*)arg);
     int result = 1;
     for (int i = 1; i <= n; i++) {
         result *= i;
