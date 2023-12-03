@@ -19,5 +19,5 @@ void main() {
 		printf("PPID = %d \n", getppid());
 		printf("Zombie process. \n");
 	}
-	while(1) { printf("Valid"); }
+	//while(1) { printf("Valid"); }
 }

@@ -16,7 +16,7 @@ int main() {
 	}
 
 	else if(pid == 0) {
-		ppid = getpid();
+		ppid = getppid();
 		printf("Inside child process\n");
 		kill(ppid, SIGSTOP);
 		printf("Parent stopped\n");

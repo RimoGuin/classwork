@@ -1,0 +1,18 @@
+Create new file: touch <file1> <file2> ... <filen>
+Create new file and write text on it: cat > <filename>
+						  Display it: cat filename
+Copy from one filename to another: cp text newtext
+Combine two txt files into one: cat file1 fil2 > file_merged
+Delete a text file: rm file
+
+Change permission of file newtext: chmod  newtext
+chmod : 7 - Owner	7 - Group	7 - Others
+		Each 7 is broken into 3 parts: r - 4	w - 2	x - 1
+		chmod 777 <filename>
+		rwxrwxrwx <filename>
+Rename the newtext to oldtext: mv newtext oldtext
+Create new directory: mkdir <my_dir>
+Move the files oldtext and matter to the directory mydir: mv -t mydir oldtext matter
+														  tree -r
+Display current date: date + "	%d/	%m/	%y"
+Count the number of users current logged into system: who -q
